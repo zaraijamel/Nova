@@ -11,5 +11,12 @@
 
     <artifactId>app-api</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>name.oleg</groupId>
+            <artifactId>app-model</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

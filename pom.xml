@@ -17,15 +17,17 @@
     </modules>
 
     <properties>
-        <spring.version>3.2.4.RELEASE</spring.version>
+        <spring.version>3.1.0.RELEASE</spring.version>
         <spring.social.facebook.version>1.0.3.RELEASE</spring.social.facebook.version>
         <spring.social.vkontakte.version>1.1.1.RELEASE</spring.social.vkontakte.version>
+        <hibernate.version>3.5.6-Final</hibernate.version>
         <mysql.connector.version>5.1.26</mysql.connector.version>
         <junit.version>4.11</junit.version>
         <squirrel.sql.version>3.5.0</squirrel.sql.version>
         <poi.version>3.9</poi.version>
         <guava.version>15.0</guava.version>
         <tiles.version>2.2.2</tiles.version>
+        <slf4j-version>1.7.5</slf4j-version>
     </properties>
 
     <dependencies>
@@ -61,15 +63,45 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.social</groupId>
             <artifactId>spring-social-facebook</artifactId>
             <version>${spring.social.facebook.version}</version>
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>1.0.2.RELEASE</version>
+        </dependency>
+
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.connector.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-annotations</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
         </dependency>
 
         <dependency>
@@ -138,7 +170,41 @@
             <version>${tiles.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j-version}</version>
+        </dependency>
 
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>rss4j</groupId>
+            <artifactId>rss4j</artifactId>
+            <version>0.92</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>2.2.2</version>
+        </dependency>
 
     </dependencies>
 

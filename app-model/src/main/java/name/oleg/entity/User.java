@@ -1,17 +1,24 @@
 package name.oleg.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Table;
+
+@javax.persistence.Entity
+@Table(name = "USER")
 public class User extends Entity {
 
-    private String userName;
+    @Column(name = "LOGIN")
+    private String login;
 
+    @Column(name = "PASSWORD")
     private String password;
 
-    public String getUserName() {
-        return userName;
+    public String getLogin() {
+        return login;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public String getPassword() {

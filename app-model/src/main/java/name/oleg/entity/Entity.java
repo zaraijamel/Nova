@@ -1,7 +1,13 @@
 package name.oleg.entity;
 
+import javax.persistence.*;
+
+@MappedSuperclass
 public class Entity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long id;
 
     public Long getId() {

@@ -1,8 +1,6 @@
 package name.oleg.service;
 
-import name.oleg.dao.VacancyDao;
-import name.oleg.entity.resume.Vacancy;
-import name.oleg.util.PageRequest;
+import name.oleg.entity.Vacancy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,16 +11,29 @@ import java.util.List;
 public class VacancyServiceImpl implements VacancyService {
 
     @Autowired
-    private VacancyDao vacancyDao;
+    private VacancyRepository vacancyRepository;
 
     @Override
-    @Transactional(readOnly = true)
-    public List<Vacancy> load(PageRequest pageRequest) {
-        return vacancyDao.loadAll();
+    @Transactional
+    public void add(Vacancy vacancy) {
+        vacancyRepository.save(vacancy);
     }
 
     @Override
-    public void test() {
-        vacancyDao.test();
+    @Transactional
+    public void delete(Vacancy vacancy) {
+        vacancyRepository.delete(vacancy);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Vacancy> findAll() {
+        return vacancyRepository.findAll();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Vacancy> findByTitle(String title) {
+        return vacancyRepository.findVacancyByTitle(title);
     }
 }

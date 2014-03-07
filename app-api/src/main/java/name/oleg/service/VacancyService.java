@@ -1,13 +1,16 @@
 package name.oleg.service;
 
-import name.oleg.entity.resume.Vacancy;
-import name.oleg.util.PageRequest;
+import name.oleg.entity.Vacancy;
 
 import java.util.List;
 
 public interface VacancyService {
 
-    public List<Vacancy> load(PageRequest pageRequest);
+    public void add(Vacancy vacancy);
 
-    public void test();
+    public void delete(Vacancy vacancy);
+
+    public List<Vacancy> findAll();
+
+    public List<Vacancy> findByTitle(String title);
 }
