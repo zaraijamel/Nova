@@ -1,9 +1,6 @@
 package name.oleg.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Lob;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 

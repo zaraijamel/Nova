@@ -2,6 +2,7 @@ package name.oleg.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @javax.persistence.Entity
 @Table(name = "VACANCY")
@@ -27,6 +28,10 @@ public class Vacancy extends Entity {
     @Column(name = "SOURCE_LINK")
     private String sourceLink;
 
+    @Column(name = "PAGE_CONTENT")
+    @Lob
+    private String pageContent;
+
     @Embedded
     private Compensation compensation;
 
@@ -41,13 +46,18 @@ public class Vacancy extends Entity {
     @Column(name = "EDUCATION")
     private Education education;
 
-    @ManyToOne
-    @JoinColumn(name = "SPECIALIZATION_ID")
-    private Specialization specialization;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "PROFESSIONAL_AREA_ID")
+    private ProfessionalArea professionalArea;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "EMPLOYER_ID")
     private Employer employer;
+
+    @ElementCollection
+    @CollectionTable(name = "TAGS", joinColumns = @JoinColumn(name = "VACANCY_ID"))
+    @Column(name = "TAG")
+    private List<String> tags;
 
     public Integer getIdentifier() {
         return identifier;
@@ -121,6 +131,14 @@ public class Vacancy extends Entity {
         this.workSchedule = workSchedule;
     }
 
+    public String getPageContent() {
+        return pageContent;
+    }
+
+    public void setPageContent(String pageContent) {
+        this.pageContent = pageContent;
+    }
+
     public Education getEducation() {
         return education;
     }
@@ -129,12 +147,12 @@ public class Vacancy extends Entity {
         this.education = education;
     }
 
-    public Specialization getSpecialization() {
-        return specialization;
+    public ProfessionalArea getProfessionalArea() {
+        return professionalArea;
     }
 
-    public void setSpecialization(Specialization specialization) {
-        this.specialization = specialization;
+    public void setProfessionalArea(ProfessionalArea professionalArea) {
+        this.professionalArea = professionalArea;
     }
 
     public Employer getEmployer() {
@@ -143,5 +161,13 @@ public class Vacancy extends Entity {
 
     public void setEmployer(Employer employer) {
         this.employer = employer;
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
     }
 }

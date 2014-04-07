@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class CatalogController {
 
-    @RequestMapping("catalog")
+    @RequestMapping("/catalog")
     public String catalog() {
         return "catalog";
     }

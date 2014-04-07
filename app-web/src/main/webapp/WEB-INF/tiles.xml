@@ -22,15 +22,37 @@
         <put-attribute name="body" value="/WEB-INF/jsp/index.jsp"/>
     </definition>
 
-    <definition name="catalog" extends="base.definition">
-        <put-attribute name="title" value="Каталог вакансий"/>
-        <put-attribute name="body" value="/WEB-INF/jsp/catalog.jsp"/>
-    </definition>
-
     <definition name="contact" extends="base.definition">
         <put-attribute name="title" value="Каталог вакансий"/>
         <put-attribute name="body" value="/WEB-INF/jsp/contact.jsp"/>
     </definition>
 
+    <definition name="search" extends="base.definition">
+        <put-attribute name="title" value="Каталог вакансий"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/search.jsp"/>
+    </definition>
+
+    <definition name="vacancy" extends="base.definition">
+        <put-attribute name="title" value="Вакансия"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/vacancy.jsp"/>
+    </definition>
+
+    <definition name="resume" extends="base.definition">
+        <put-attribute name="title" value="Генерация резюме"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/resume.jsp"/>
+    </definition>
+
+    <definition name="formRecommendationInsert" template="/WEB-INF/jsp/resume/formRecommendationInsert.jsp">
+    </definition>
+
+    <definition name="resumeSuccessful" extends="base.definition">
+        <put-attribute name="title" value="Успешно"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/resumeSuccessful.jsp"/>
+    </definition>
+
+    <definition name="resumeError" extends="base.definition">
+        <put-attribute name="title" value="Ошибка при генерации резюме"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/resumeError.jsp"/>
+    </definition>
 
 </tiles-definitions>

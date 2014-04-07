@@ -1,8 +1,6 @@
 package name.oleg.entity;
 
-import javax.persistence.Column;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +12,7 @@ public class ProfessionalArea extends Entity {
     private String title;
 
     @OneToMany(mappedBy = "professionalArea")
-    private List<Specialization> specializations = new ArrayList<Specialization>();
+    private List<Vacancy> vacancies = new ArrayList<Vacancy>();
 
     public String getTitle() {
         return title;
@@ -24,11 +22,11 @@ public class ProfessionalArea extends Entity {
         this.title = title;
     }
 
-    public List<Specialization> getSpecializations() {
-        return specializations;
+    public List<Vacancy> getVacancies() {
+        return vacancies;
     }
 
-    public void setSpecializations(List<Specialization> specializations) {
-        this.specializations = specializations;
+    public void setVacancies(List<Vacancy> vacancies) {
+        this.vacancies = vacancies;
     }
 }

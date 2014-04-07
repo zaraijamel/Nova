@@ -9,12 +9,29 @@
 
     <import resource="datasource-context.xml"/>
 
-    <context:annotation-config/>
+    <import resource="scheduler-context.xml"/>
 
-    <context:component-scan base-package="name.oleg.service"/>
+    <context:annotation-config/>
 
     <jpa:repositories base-package="name.oleg.service"/>
 
-    <bean id="vacancyService" class="name.oleg.service.VacancyServiceImpl"/>
+    <context:component-scan base-package="name.oleg.service"/>
+    <context:component-scan base-package="name.oleg.mapper"/>
+    <context:component-scan base-package="name.oleg.parser"/>
+    <context:component-scan base-package="name.oleg.resume"/>
+    <context:component-scan base-package="name.oleg.mail"/>
+
+    <bean id="linkedInApiOAuthFactory" class="com.google.code.linkedinapi.client.oauth.LinkedInOAuthServiceFactory"
+          factory-method="getInstance"/>
+    <bean id="linkedInOAuthService" factory-bean="linkedInApiOAuthFactory" factory-method="createLinkedInOAuthService">
+        <constructor-arg value="77hnk6zqvjt474"/>
+        <constructor-arg value="1t4aOLkm4EoGgWVE"/>
+    </bean>
+
+    <bean id="linkedInApiClientFactory" class="com.google.code.linkedinapi.client.LinkedInApiClientFactory"
+          factory-method="newInstance">
+        <constructor-arg value="77hnk6zqvjt474"/>
+        <constructor-arg value="1t4aOLkm4EoGgWVE"/>
+    </bean>
 
 </beans>

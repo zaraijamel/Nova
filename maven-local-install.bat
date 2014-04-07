@@ -1,0 +1,2 @@
+mvn install:install-file -Dfile=D:\Development\Projects\Nova\library\horrorss-2.2.0-bin\horrorss-2.2.0.jar -DgroupId=org.horrabin.horrorss -DartifactId=horrorss -Dversion=2.2.0 -Dpackaging=jar
+mvn install:install-file -Dfile=D:\Development\Projects\Nova\library\horrorss-2.2.0-bin\sparta.jar -DgroupId=com.hp.hpl.sparta -DartifactId=sparta -Dversion=0.0.1 -Dpackaging=jar

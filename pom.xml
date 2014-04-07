@@ -17,7 +17,9 @@
     </modules>
 
     <properties>
-        <spring.version>3.1.0.RELEASE</spring.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.version>4.0.1.RELEASE</spring.version>
+        <spring.data.version>1.5.0.RELEASE</spring.data.version>
         <spring.social.facebook.version>1.0.3.RELEASE</spring.social.facebook.version>
         <spring.social.vkontakte.version>1.1.1.RELEASE</spring.social.vkontakte.version>
         <hibernate.version>3.5.6-Final</hibernate.version>
@@ -35,6 +37,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
@@ -77,7 +85,7 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>1.0.2.RELEASE</version>
+            <version>${spring.data.version}</version>
         </dependency>
 
         <dependency>
@@ -108,12 +116,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>net.sf.squirrel-sql</groupId>
-            <artifactId>squirrel-sql</artifactId>
-            <version>${squirrel.sql.version}</version>
         </dependency>
 
         <dependency>
@@ -188,11 +190,11 @@
             <version>1.2</version>
         </dependency>
 
-        <dependency>
-            <groupId>rss4j</groupId>
-            <artifactId>rss4j</artifactId>
-            <version>0.92</version>
-        </dependency>
+        <!--<dependency>
+            <groupId>rome</groupId>
+            <artifactId>rome</artifactId>
+            <version>1.0</version>
+        </dependency>-->
 
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -201,9 +203,106 @@
         </dependency>
 
         <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>1.8.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.horrabin.horrorss</groupId>
+            <artifactId>horrorss</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.hp.hpl.sparta</groupId>
+            <artifactId>sparta</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <!-- <dependency>
+             <groupId>com.artofsolving</groupId>
+             <artifactId>jodconverter</artifactId>
+             <version>2.2.1</version>
+         </dependency>-->
+
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>xdocreport</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.document.docx</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.converter.docx.xwpf</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.converter.docx.docx4j</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.document.tools</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.template.freemarker</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>fr.opensagres.xdocreport</groupId>
+            <artifactId>fr.opensagres.xdocreport.template.velocity</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.odftoolkit</groupId>
+            <artifactId>odfdom-java</artifactId>
+            <version>0.8.7</version>
+        </dependency>
+
+        <!--<dependency>-->
+        <!--<groupId>com.googlecode.linkedin-j</groupId>-->
+        <!--<artifactId>linkedin-j-core</artifactId>-->
+        <!--<version>1.0.429</version>-->
+        <!--<scope>compile</scope>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4.3</version>
+        </dependency>
+
+        <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
-            <version>2.2.2</version>
+            <version>2.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.6.11</version>
         </dependency>
 
     </dependencies>
