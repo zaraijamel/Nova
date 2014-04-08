@@ -60,8 +60,7 @@ public class VacancyServiceImpl implements VacancyService {
 
         PageRequest pageRequest = new PageRequest(vacancySearchParam.getPage(), SEARCH_PER_PAGE);
         String searchTerm = vacancySearchParam.getSearchTerm();
-        if (searchTerm != null) {
-            //todo search term
+        if (searchTerm == null) {
             return vacancyRepository.findAll(pageRequest);
         } else {
             return vacancyRepository.findByTag(searchTerm, pageRequest);

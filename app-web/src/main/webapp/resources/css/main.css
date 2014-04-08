@@ -159,7 +159,7 @@ span.tag-line {
 
 /* Header - Search ---------------------------------------------------------------------------------------------------*/
 .search-area-wrapper {
-    background: #353b65 url("../images/main-bg.jpg") center top no-repeat;
+    background: #353b65 url("../images/main-bg2.jpg") center top no-repeat;
     background-size: 100%;
     min-height: 279px;
     height: auto !important;
@@ -1569,5 +1569,38 @@ a#scroll-top:hover {
 
 .slide-toggle-container .content {
     display: none;
-    padding : 5px;
+    padding: 5px;
+}
+
+.search-filter {
+    margin: auto;
+}
+
+.search-filter .header {
+    vertical-align: baseline;
+    text-align: left;
+    color: #fff;
+}
+
+.search-filter input[type=radio], input.radio, input[type=checkbox], input.checkbox {
+    float: left;
+    clear: none;
+    margin-right: 2px;
+}
+
+.search-filter label {
+    float: left;
+    clear: none;
+    display: block;
+    padding: 2px 1em 0 0;
+    color: #fff;
+}
+
+.search-filter table tr td:empty {
+    width: 50px;
+}
+
+.search-filter table tr td {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
