@@ -64,37 +64,24 @@
 
                 <section class="widget">
                     <div class="support-widget">
-                        <h3 class="title">Support</h3>
-                        <p class="intro">Need more support? If you did not found an answer, contact us for further help.</p>
+                        <h3 class="title">Генератор резюме</h3>
+
+                        <p class="intro">Хотите создать резюме? <a href="<c:url value="/resume"/>">Создать.</a></p>
                     </div>
                 </section>
 
                 <section class="widget">
-                    <h3 class="title">Latest Articles</h3>
-                    <ul class="articles">
-                        <li class="article-entry standard">
-                            <h4><a href="single.html">Integrating WordPress with Your Website</a></h4>
-                            <span class="article-meta">25 Feb, 2013 in <a href="#" title="View all posts in Server &amp; Database">Server &amp; Database</a></span>
-                            <span class="like-count">66</span>
-                        </li>
-                        <li class="article-entry standard">
-                            <h4><a href="single.html">WordPress Site Maintenance</a></h4>
-                            <span class="article-meta">24 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>
-                            <span class="like-count">15</span>
-                        </li>
-                        <li class="article-entry video">
-                            <h4><a href="single.html">Meta Tags in WordPress</a></h4>
-                            <span class="article-meta">23 Feb, 2013 in <a href="#" title="View all posts in Website Dev">Website Dev</a></span>
-                            <span class="like-count">8</span>
-                        </li>
-                        <li class="article-entry image">
-                            <h4><a href="single.html">WordPress in Your Language</a></h4>
-                            <span class="article-meta">22 Feb, 2013 in <a href="#" title="View all posts in Advanced Techniques">Advanced Techniques</a></span>
-                            <span class="like-count">6</span>
-                        </li>
-                    </ul>
+                    <div class="quick-links-widget">
+                        <h3 class="title">Полезные ссылки</h3>
+                        <ul id="menu-quick-links" class="menu clearfix">
+                            <li><a href="<c:url value="/"/>">Домашнаяя страница</a></li>
+                            <li><a href="<c:url value="/catalog"/>">Каталог вакансий</a></li>
+                            <li><a href="<c:url value="/catalog"/>">Создание резюме</a></li>
+                            <li><a href="<c:url value="/catalog"/>">Мой профайл</a></li>
+                            <li><a href="<c:url value="/contact"/>">Контакты</a></li>
+                        </ul>
+                    </div>
                 </section>
-
 
             </aside>
             <!-- end of sidebar -->

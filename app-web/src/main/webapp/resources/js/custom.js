@@ -16,6 +16,8 @@ jQuery(document).ready(function (e) {
             });
     });
 
+
+
     $(".slide-toggle-control").click(function () {
         $header = $(this);
         $content = $header.next();
@@ -286,9 +288,9 @@ jQuery(document).ready(function (e) {
     /*-----------------------------------------------------------------------------------*/
     /*	Search Form Validation
      /*-----------------------------------------------------------------------------------*/
-    $('#search-form').validate({
+   /* $('#search-form').validate({
         errorLabelContainer: $("#search-error-container")
-    });
+    });*/
 
 
     /*-----------------------------------------------------------------------------------*/

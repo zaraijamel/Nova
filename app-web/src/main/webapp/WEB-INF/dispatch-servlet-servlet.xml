@@ -15,6 +15,10 @@
 
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 
+    <mvc:interceptors>
+        <bean class="name.oleg.interceptor.SearchHandleInterceptor"/>
+    </mvc:interceptors>
+
     <bean class="org.springframework.data.web.config.SpringDataWebConfiguration"/>
 
     <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">

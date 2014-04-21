@@ -1572,8 +1572,9 @@ a#scroll-top:hover {
     padding: 5px;
 }
 
-.search-filter {
-    margin: auto;
+.content {
+    margin-top: 10px;
+    margin-left: 90px;
 }
 
 .search-filter .header {
@@ -1585,6 +1586,7 @@ a#scroll-top:hover {
 .search-filter input[type=radio], input.radio, input[type=checkbox], input.checkbox {
     float: left;
     clear: none;
+    vertical-align: baseline;
     margin-right: 2px;
 }
 
@@ -1592,12 +1594,13 @@ a#scroll-top:hover {
     float: left;
     clear: none;
     display: block;
+    vertical-align: baseline;
     padding: 2px 1em 0 0;
     color: #fff;
 }
 
 .search-filter table tr td:empty {
-    width: 50px;
+    width: 40px;
 }
 
 .search-filter table tr td {

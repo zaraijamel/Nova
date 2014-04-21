@@ -7,30 +7,19 @@ import javax.persistence.Enumerated;
 @Embeddable
 public class Compensation {
 
-    @Column(name = "COMPENSATION_FROM")
-    private Long from;
-
-    @Column(name = "COMPENSATION_TO")
-    private Long to;
+    @Column(name = "COMPENSATION")
+    private Long compensation;
 
     @Enumerated
     @Column(name = "CURRENCY")
     private Currency currency;
 
-    public Long getFrom() {
-        return from;
+    public Long getCompensation() {
+        return compensation;
     }
 
-    public void setFrom(Long from) {
-        this.from = from;
-    }
-
-    public Long getTo() {
-        return to;
-    }
-
-    public void setTo(Long to) {
-        this.to = to;
+    public void setCompensation(Long compensation) {
+        this.compensation = compensation;
     }
 
     public Currency getCurrency() {

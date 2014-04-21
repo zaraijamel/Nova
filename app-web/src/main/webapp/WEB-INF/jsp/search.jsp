@@ -21,30 +21,33 @@
 
                             <div class="post-meta clearfix">
                                 <span class="date"><fmt:formatDate value="${vacancy.entranceDate}"
-                                                                   pattern="yyyy-MM-dd"/></span>
+                                                                   pattern="dd-MM-yyyy"/></span>
                                 <span class="category"><a
                                         href="<c:url  value="/search?profArea=${vacancy.professionalArea.title}"/>"
                                         title="${vacancy.professionalArea.title}">${vacancy.professionalArea.title}</a></span>
+
                                 <c:choose>
-                                    <c:when test="${vacancy.sourceLink} != null">
+                                    <c:when test="${vacancy.sourceLink != null}">
                                         <span class="comments"><a href="<c:url value="${vacancy.sourceLink}"/>"
                                                                   title="${vacancy.sourceLink}">Источник</a></span>
                                     </c:when>
                                 </c:choose>
+
                             </div>
                             <!-- end of post meta -->
 
                         </header>
 
                         <c:choose>
-                            <c:when test="${vacancy.employer.logoUrl} != null">
+                            <c:when test="${vacancy.employer.logoUrl != null}">
                                 <img src="<c:url value="${vacancy.employer.logoUrl}"/>"/>
                             </c:when>
                         </c:choose>
 
 
                         <p>${vacancy.description}<a class="readmore-link"
-                                                    href="<c:url value="/vacancy/${vacancy.id}"/>">Подробнее</a></p>
+                                                    href="<c:url value="/vacancy/${vacancy.id}"/>">&nbsp;&nbsp;&nbsp;Подробнее</a>
+                        </p>
 
                     </article>
                 </c:forEach>
@@ -96,6 +99,28 @@
             <aside class="span4 page-sidebar">
 
                 <section class="widget">
+                    <div class="support-widget">
+                        <h3 class="title">Генератор резюме</h3>
+
+                        <p class="intro">Хотите создать резюме? <a href="<c:url value="/resume"/>">Создать.</a></p>
+                    </div>
+                </section>
+
+                <section class="widget">
+                    <div class="quick-links-widget">
+                        <h3 class="title">Полезные ссылки</h3>
+                        <ul id="menu-quick-links" class="menu clearfix">
+                            <li><a href="<c:url value="/"/>">Домашнаяя страница</a></li>
+                            <li><a href="<c:url value="/catalog"/>">Каталог вакансий</a></li>
+                            <li><a href="<c:url value="/catalog"/>">Создание резюме</a></li>
+                            <li><a href="<c:url value="/catalog"/>">Мой профайл</a></li>
+                            <li><a href="<c:url value="/contact"/>">Контакты</a></li>
+                        </ul>
+                    </div>
+                </section>
+
+
+                <section class="widget">
                     <h3 class="title">Новые объявления</h3>
                     <ul class="articles">
                         <c:forEach var="vacancy" items="${newestVacancies}">
@@ -107,18 +132,6 @@
                                     &amp; Database</a></span>
                             </li>
                         </c:forEach>
-                    </ul>
-                </section>
-
-                <section class="widget"><h3 class="title">Categories</h3>
-                    <ul>
-                        <li><a href="#" title="Lorem ipsum dolor sit amet,">Advanced Techniques</a></li>
-                        <li><a href="#" title="Lorem ipsum dolor sit amet,">Designing in WordPress</a></li>
-                        <li><a href="#" title="Lorem ipsum dolor sit amet,">Server &amp; Database</a></li>
-                        <li><a href="#" title="Lorem ipsum dolor sit amet, ">Theme Development</a></li>
-                        <li><a href="#" title="Lorem ipsum dolor sit amet,">Website Dev</a></li>
-                        <li><a href="#" title="Lorem ipsum dolor sit amet,">WordPress for Beginners</a></li>
-                        <li><a href="#" title="Lorem ipsum dolor sit amet, ">WordPress Plugins</a></li>
                     </ul>
                 </section>
 

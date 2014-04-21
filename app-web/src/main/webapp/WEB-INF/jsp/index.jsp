@@ -18,11 +18,24 @@
                             <c:forEach var="vacancy" items="${newestVacancies}">
                                 <li class="article-entry standard">
                                     <h4><a href="<c:url value="/vacancy/${vacancy.id}"/>">${vacancy.title}</a></h4>
+                                    <h4>
+                                        <c:choose>
+                                            <c:when test="${vacancy.employer.url != null}">
+                                                <a href="${vacancy.employer.url}">${vacancy.employer.title}</a>
+                                            </c:when>
+                                            <c:otherwise>
+                                                ${vacancy.employer.title}
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </h4>
                                 <span class="article-meta"><fmt:formatDate value="${vacancy.entranceDate}"
-                                                                           pattern="yyyy-MM-dd"/> in <a href="#"
-                                                                                                        title="View all posts in Server &amp; Database">Server
-                                    &amp; Database</a></span>
-                                    <span class="like-count">66</span>
+                                                                           pattern="dd-MM-yyyy"/>
+                                    <c:choose>
+                                        <c:when test="${vacancy.area != null}">
+                                            &nbsp;из&nbsp;${vacancy.area}
+                                        </c:when>
+                                    </c:choose>
+                                </span>
                                 </li>
                             </c:forEach>
 
@@ -36,10 +49,24 @@
                             <c:forEach var="vacancy" items="${nearestVacancies}">
                                 <li class="article-entry standard">
                                     <h4><a href="<c:url value="/vacancy/${vacancy.id}"/>">${vacancy.title}</a></h4>
-                                <span class="article-meta">${vacancy.entranceDate} in <a href="#"
-                                                                                         title="View all posts in Server &amp; Database">Server
-                                    &amp; Database</a></span>
-                                    <span class="like-count">66</span>
+                                    <h4>
+                                        <c:choose>
+                                            <c:when test="${vacancy.employer.url != null}">
+                                                <a href="${vacancy.employer.url}">${vacancy.employer.title}</a>
+                                            </c:when>
+                                            <c:otherwise>
+                                                ${vacancy.employer.title}
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </h4>
+                                <span class="article-meta"><fmt:formatDate value="${vacancy.entranceDate}"
+                                                                           pattern="dd-MM-yyyy"/>
+                                <c:choose>
+                                    <c:when test="${vacancy.area != null}">
+                                        &nbsp;из&nbsp;${vacancy.area}
+                                    </c:when>
+                                </c:choose>
+                                </span>
                                 </li>
                             </c:forEach>
                         </ul>
@@ -66,13 +93,15 @@
                         <ul id="menu-quick-links" class="menu clearfix">
                             <li><a href="<c:url value="/"/>">Домашнаяя страница</a></li>
                             <li><a href="<c:url value="/catalog"/>">Каталог вакансий</a></li>
+                            <li><a href="<c:url value="/catalog"/>">Создание резюме</a></li>
+                            <li><a href="<c:url value="/catalog"/>">Мой профайл</a></li>
                             <li><a href="<c:url value="/contact"/>">Контакты</a></li>
                         </ul>
                     </div>
                 </section>
 
                 <section class="widget">
-                    <h3 class="title">Tags</h3>
+                    <h3 class="title">Теги</h3>
 
                     <div class="tagcloud">
                         <c:forEach var="tag" items="${tags}">

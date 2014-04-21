@@ -7,9 +7,9 @@ import com.google.code.linkedinapi.client.oauth.LinkedInOAuthService;
 import com.google.code.linkedinapi.client.oauth.LinkedInRequestToken;
 import com.google.code.linkedinapi.schema.Person;
 import name.oleg.controller.util.LinkedinPersonaProcessor;
-import name.oleg.resume.ResumeGenerator;
 import name.oleg.resume.ResumeServiceImpl;
 import name.oleg.resume.data.ResumeData;
+import name.oleg.resume.data.ResumeTemplate;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -33,10 +34,12 @@ public class ResumeController {
     private LinkedInApiClientFactory clientFactory;
 
     @Autowired
-    private ResumeGenerator resumeGenerator;
-
-    @Autowired
     private ResumeServiceImpl resumeService;
+
+    @ModelAttribute("resumeData")
+    public ResumeData getClassCommand() {
+        return new ResumeData();
+    }
 
     @RequestMapping("/resume")
     public String request(Model model) {
@@ -44,13 +47,26 @@ public class ResumeController {
         return "resume";
     }
 
-    @ModelAttribute("resumeData")
-    public ResumeData getClassCommand() {
-        return new ResumeData();
+    @RequestMapping(value = "/resume/save", method = RequestMethod.POST)
+    public String sendResumeToUser(@ModelAttribute("resumeData") ResumeData resumeData, HttpServletResponse response) {
+        response.setContentType("application/pdf");
+        response.setHeader("Content-Disposition", "attachment;filename=resume.pdf");
+        try {
+            resumeService.generateResume(response.getOutputStream(), resumeData, null);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            return "resumeError";
+        }
+        return "resumeSuccessful";
     }
 
     @RequestMapping(value = "/resume/generate", method = RequestMethod.POST)
-    public String generate(@ModelAttribute("resumeData") ResumeData resumeData) {
+    public String generate(HttpServletResponse response, HttpServletRequest request) {
+        ResumeData resumeData = (ResumeData) request.getAttribute("resumeData");
+        if (resumeData == null) {
+            return "resumeError";
+        }
+
         try {
 //            resumeGenerator.generate(resumeData, new File(""), new File(""));
         } catch (Exception e) {
@@ -95,5 +111,12 @@ public class ResumeController {
     public String appendRecommendation(@RequestParam Integer fieldId, Model model) {
         model.addAttribute("number", fieldId);
         return "formRecommendationInsert";
+    }
+
+    @RequestMapping("/resumeTemplate")
+    public String resumeTemplate(@ModelAttribute("resumeData") ResumeData resumeData, HttpServletResponse response, HttpServletRequest request, Model model) {
+        request.setAttribute("resumeData", resumeData);
+        model.addAttribute("resumeTemplates", ResumeTemplate.values());
+        return "resumeTemplate";
     }
 }

@@ -39,20 +39,28 @@
 
     <definition name="resume" extends="base.definition">
         <put-attribute name="title" value="Генерация резюме"/>
-        <put-attribute name="body" value="/WEB-INF/jsp/resume.jsp"/>
+        <put-attribute name="body" value="resume.forms"/>
     </definition>
 
-    <definition name="formRecommendationInsert" template="/WEB-INF/jsp/resume/formRecommendationInsert.jsp">
+    <definition name="resume.forms" template="/WEB-INF/jsp/resume.jsp">
+        <put-attribute name="formRecommendationInsert" value="/WEB-INF/jsp/resume/formRecommendationInsert.jsp"/>
     </definition>
+
+    <definition name="formRecommendationInsert" template="/WEB-INF/jsp/resume/formRecommendationInsert.jsp"/>
 
     <definition name="resumeSuccessful" extends="base.definition">
-        <put-attribute name="title" value="Успешно"/>
         <put-attribute name="body" value="/WEB-INF/jsp/resumeSuccessful.jsp"/>
     </definition>
 
     <definition name="resumeError" extends="base.definition">
-        <put-attribute name="title" value="Ошибка при генерации резюме"/>
         <put-attribute name="body" value="/WEB-INF/jsp/resumeError.jsp"/>
     </definition>
+
+    <definition name="resumeTemplate" extends="base.definition">
+        <put-attribute name="title" value="Генерация резюме"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/resumeTemplate.jsp"/>
+    </definition>
+
+    <definition name="login" template="/WEB-INF/jsp/login.jsp"/>
 
 </tiles-definitions>

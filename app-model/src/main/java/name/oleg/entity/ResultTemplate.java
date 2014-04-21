@@ -14,10 +14,6 @@ public class ResultTemplate extends Entity {
     @Column(name = "DESCRIPTION")
     private String description;
 
-    @Column(name = "TEMPLATE")
-    @Lob
-    private String template;
-
     public String getTitle() {
         return title;
     }
@@ -32,13 +28,5 @@ public class ResultTemplate extends Entity {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getTemplate() {
-        return template;
-    }
-
-    public void setTemplate(String template) {
-        this.template = template;
     }
 }

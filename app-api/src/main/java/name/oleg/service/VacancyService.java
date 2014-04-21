@@ -1,6 +1,7 @@
 package name.oleg.service;
 
 import name.oleg.entity.Vacancy;
+import name.oleg.search.VacancySearchParam;
 import name.oleg.util.Coordinate;
 import org.springframework.data.domain.Page;
 
@@ -21,7 +22,7 @@ public interface VacancyService {
 
     public List<Vacancy> findByTitle(String title);
 
-    public Page<Vacancy> find(VacancySearchParam vacancySearchParam);
+    public Page<Vacancy> find(int page, VacancySearchParam vacancySearchParam);
 
     public List<Vacancy> findNewest();
 

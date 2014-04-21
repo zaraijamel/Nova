@@ -47,15 +47,16 @@
 
         <p class="search-tag-line">Вы можете ввести интересующие название вакансии ниже!</p>
 
-        <form id="search-form" class="search-form clearfix" method="get" action="<c:url value="/search"/>"
-              autocomplete="off">
-            <input class="search-term required" type="text" id="s" name="searchTerm"
-                   placeholder="Введите текст для поиска"
-                   title="* Введите текст для поиска!"
-                   value="${searchTerm}"/>
-            <input class="search-btn" type="submit" value="Найти"/>
+        <form:form id="search-form" class="search-form clearfix" method="get" action="/search"
+                   autocomplete="off" commandName="vacancySearchParam">
+            <div>
 
-            <div id="search-error-container"></div>
+
+            <form:input class="search-term required" type="text" id="s" name="searchTerm"
+                        placeholder="Введите текст для поиска"
+                        value="${vacancySearchParam.searchTerm}"
+                        path="searchTerm"/>
+            <input class="search-btn" type="submit" value="Найти"/>
 
             <div class="slide-toggle-container">
                 <div class="slide-toggle-control"><span>Развернуть</span></div>
@@ -68,7 +69,10 @@
                                 <td></td>
                                 <td>
                                     <label>
-                                        <input type="text"/>
+                                        От&nbsp;
+                                        <form:input path="compensationFrom"/>
+                                        &nbsp;до&nbsp;
+                                        <form:input path="compensationTo"/>
                                     </label>
                                 </td>
                             </tr>
@@ -77,11 +81,12 @@
                                 <td class="header">Требуемый опыт работы:</td>
                                 <td></td>
                                 <td>
-                                    <label><input type="radio" value="test1">Не имеет значения</label>
-                                    <label><input type="radio" value="test2">Нет опыта</label>
-                                    <label><input type="radio" value="test3">От 1 года до 3 лет</label>
-                                    <label><input type="radio" value="test4">От 3 до 6 лет</label>
-                                    <label><input type="radio" value="test4">Более 6 лет</label>
+                                    <c:forEach var="item" items="${vacancySearchExperience}">
+                                        <label>
+                                            <form:checkbox path="vacancySearchExperiences" value="${item}"/>
+                                                ${item.description}
+                                        </label>
+                                    </c:forEach>
                                 </td>
                             </tr>
 
@@ -89,9 +94,12 @@
                                 <td class="header">График работы:</td>
                                 <td></td>
                                 <td>
-                                    <label><input type="checkbox" value="test1">Полный день</label>
-                                    <label><input type="checkbox" value="test2">Сменный график</label>
-                                    <label><input type="checkbox" value="test3">Удаленная работа</label>
+                                    <c:forEach var="item" items="${vacancySearchWorkSchedule}">
+                                        <label>
+                                            <form:checkbox path="vacancySearchWorkSchedules" value="${item}"/>
+                                                ${item.description}
+                                        </label>
+                                    </c:forEach>
                                 </td>
                             </tr>
 
@@ -99,9 +107,12 @@
                                 <td class="header">Тип занятости:</td>
                                 <td></td>
                                 <td>
-                                    <label><input type="checkbox" value="test1">Полная занятость</label>
-                                    <label><input type="checkbox" value="test2">Частичная занятость</label>
-                                    <label><input type="checkbox" value="test3">Временная работа</label>
+                                    <c:forEach var="item" items="${vacancySearchEducation}">
+                                        <label>
+                                            <form:checkbox path="vacancySearchEducations" value="${item}"/>
+                                                ${item.description}
+                                        </label>
+                                    </c:forEach>
                                 </td>
                             </tr>
 
@@ -109,20 +120,26 @@
                                 <td class="header">Выводить:</td>
                                 <td></td>
                                 <td>
-                                    <label><input type="radio" value="test1">За месяц</label>
-                                    <label><input type="radio" value="test2">За недели</label>
-                                    <label><input type="radio" value="test3">За 3 дня</label>
-                                    <label><input type="radio" value="test4">За 1 день</label>
+                                    <c:forEach var="item" items="${vacancySearchPeriod}">
+                                        <label>
+                                            <form:radiobutton path="vacancySearchPeriod" value="${item}"/>
+                                                ${item.description}
+                                        </label>
+                                    </c:forEach>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td class="header">Сортировать:</td>
-                                <td></td>
                                 <td>
-                                    <label><input type="radio" value="test1">Зарплате</label>
-                                    <label><input type="radio" value="test2">Дате создания</label>
-                                    <label><input type="radio" value="test3">Соответствую</label>
+                                </td>
+                                <td>
+                                    <c:forEach var="item" items="${vacancySearchSort}">
+                                        <label>
+                                            <form:radiobutton path="vacancySearchSort" value="${item}"/>
+                                                ${item.description}
+                                        </label>
+                                    </c:forEach>
                                 </td>
                             </tr>
 
@@ -131,7 +148,8 @@
 
                 </div>
             </div>
-        </form>
+            </div>
+        </form:form>
     </div>
 </div>
 <!-- End of Search Wrapper -->

@@ -35,8 +35,12 @@ public class WordResumeGenerator implements ResumeGenerator {
         }
     }
 
-    @Override
     public void generate(ResumeData resumeData, InputStream sourceFile, InputStream destination) throws Exception {
 
+    }
+
+    @Override
+    public void generate(ResumeData resumeData, File templateFile, OutputStream destination) throws Exception {
+        //To change body of implemented methods use File | Settings | File Templates.
     }
 }

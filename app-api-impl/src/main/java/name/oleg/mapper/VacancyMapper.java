@@ -33,8 +33,8 @@ public class VacancyMapper implements Mapper<VacancyDto, Vacancy> {
 
         Compensation compensationFrom = from.getCompensation();
         name.oleg.entity.Compensation compensationTo = new name.oleg.entity.Compensation();
-        compensationTo.setFrom(compensationFrom.getFrom());
-        compensationTo.setTo(compensationFrom.getTo());
+//        compensationTo.setFrom(compensationFrom.getFrom());
+//        compensationTo.setTo(compensationFrom.getTo());
         //todo
 //        compensationTo.setCurrency(Currency.valueOf(compensationFrom.getCurrency().name()));
         to.setCompensation(compensationTo);

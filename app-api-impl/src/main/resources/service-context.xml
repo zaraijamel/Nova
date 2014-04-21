@@ -11,6 +11,8 @@
 
     <import resource="scheduler-context.xml"/>
 
+    <import resource="security-context.xml"/>
+
     <context:annotation-config/>
 
     <jpa:repositories base-package="name.oleg.service"/>

@@ -1,213 +1,257 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <!-- Start of Page Container -->
 <div class="page-container">
 <div class="container">
 <div class="row">
 <div class="span8 main-listing">
 
-    <article class=" page type-page hentry clearfix">
+<article class=" page type-page hentry clearfix">
 
-        <h1 class="post-title"><a href="#">Резюме</a></h1>
-        <hr>
-        <p>WordPress is open source web software that you can install on your web server to create your
-            website, blog, community or network. WordPress started out as a tool for blogging, but has
-            evolved into a full-fledged Content Management System (CMS), capable of powering websites,
-            networks and communities.</p>
+    <h1 class="post-title"><a href="#">Резюме</a></h1>
+    <hr>
+    <p>WordPress is open source web software that you can install on your web server to create your
+        website, blog, community or network. WordPress started out as a tool for blogging, but has
+        evolved into a full-fledged Content Management System (CMS), capable of powering websites,
+        networks and communities.</p>
+</article>
+
+<div class="faqs clearfix">
+
+<a href="<c:url value="/resume/requestLinkedin"/>"><img alt="linkedin"
+                                                        src="<c:url value="/resources/images/linkedin.png"/>"/>&nbsp;Связать
+    linkedin-аккаунт</a>
+
+<br/>
+<br/>
+
+<form:form method="POST" action="/resumeTemplate" commandName="resumeData">
+
+    <article class="faq-item active">
+        <span class="faq-icon"></span>
+
+        <h3 class="faq-question">
+            <a href="#">Персональные данные</a>
+        </h3>
+
+        <div class="faq-answer">
+            <p>Заполните персональные данные.</p>
+
+            <form:label path="firstName">Имя</form:label>
+            <form:input path="firstName"/>
+
+            <form:label path="lastName">Фамилия</form:label>
+            <form:input path="lastName"/>
+
+            <form:label path="middleName">Отчество</form:label>
+            <form:input path="middleName"/>
+
+            <form:label path="phone">Телефон</form:label>
+            <form:input path="phone" placeholder="(8029)123-12-34"/>
+
+            <form:label path="website">Персональный сайт</form:label>
+            <form:input path="website" placeholder="www.example.com"/>
+
+            <form:label path="email">Email</form:label>
+            <form:input path="email" placeholder="example@mail.com"/>
+
+        </div>
     </article>
 
-    <div class="faqs clearfix">
+    <article class="faq-item">
+        <span class="faq-icon"></span>
 
-        <a href="<c:url value="/resume/requestLinkedin"/>"><img alt="linkedin"
-                                                                src="<c:url value="/resources/images/linkedin.png"/>"/>&nbsp;Связать
-            linkedin-аккаунт</a>
+        <h3 class="faq-question">
+            <a href="#">Адрес</a>
+        </h3>
 
-        <br/>
-        <br/>
+        <div class="faq-answer">
+            <p>Заполните адрес проживания.</p>
 
-        <form:form method="POST" action="/resume/generate" commandName="resumeData">
+            <form:label path="address.city">Город</form:label>
+            <form:input path="address.city"/>
 
-            <article class="faq-item active">
-                <span class="faq-icon"></span>
+            <form:label path="address.street">Адрес</form:label>
+            <form:input path="address.street"/>
+        </div>
+    </article>
 
-                <h3 class="faq-question">
-                    <a href="#">Персональные данные</a>
-                </h3>
+    <article class="faq-item">
+        <span class="faq-icon"></span>
 
-                <div class="faq-answer">
-                    <p>Заполните персональные данные.</p>
+        <h3 class="faq-question">
+            <a href="#">Образование</a>
+        </h3>
 
-                    <form:label path="firstName">Имя</form:label>
-                    <form:input path="firstName"/>
+        <div class="faq-answer">
+            <p>Заполните информацию об обрзованиее.</p>
 
-                    <form:label path="lastName">Фамилия</form:label>
-                    <form:input path="lastName"/>
+            <c:forEach varStatus="vs" items="${resumeData.educations}">
+                <form:label
+                        path="educations[${vs.index}].institution">Учреждение образования</form:label>
+                <form:input path="educations[${vs.index}].institution"/>
 
-                    <form:label path="middleName">Отчество</form:label>
-                    <form:input path="middleName"/>
+                <form:label path="educations[${vs.index}].specialty">Специальность</form:label>
+                <form:input path="educations[${vs.index}].specialty"/>
 
-                    <form:label path="phone">Телефон</form:label>
-                    <form:input path="phone" placeholder="(8029)123-12-34"/>
+                <form:label
+                        path="educations[${vs.index}].additionalSpecialty">Дополнительная специальность</form:label>
+                <form:input path="educations[${vs.index}].additionalSpecialty"/>
 
-                    <form:label path="website">Персональный сайт</form:label>
-                    <form:input path="website" placeholder="www.example.com"/>
+                <form:label
+                        path="educations[${vs.index}].academicDegree">Ученая степень</form:label>
+                <form:input path="educations[${vs.index}].academicDegree"/>
 
-                    <form:label path="email">Email</form:label>
-                    <form:input path="email" placeholder="example@mail.com"/>
+                <form:label path="educations[${vs.index}].startDate">Начало</form:label>
+                <form:input path="educations[${vs.index}].startDate"/>
 
-                </div>
-            </article>
+                <form:label path="educations[${vs.index}].endDate">Конец</form:label>
+                <form:input path="educations[${vs.index}].endDate"/>
+            </c:forEach>
 
-            <article class="faq-item">
-                <span class="faq-icon"></span>
+        </div>
+    </article>
 
-                <h3 class="faq-question">
-                    <a href="#">Адрес</a>
-                </h3>
+    <article class="faq-item">
+        <span class="faq-icon"></span>
 
-                <div class="faq-answer">
-                    <p>Заполните адрес проживания.</p>
+        <h3 class="faq-question">
+            <a href="#">Опыт</a>
+        </h3>
 
-                    <form:label path="address.city">Город</form:label>
-                    <form:input path="address.city"/>
+        <div class="faq-answer">
+            <p>Заполните информацию об опыте.</p>
 
-                    <form:label path="address.street">Адрес</form:label>
-                    <form:input path="address.street"/>
-                </div>
-            </article>
+            <c:forEach varStatus="vs" items="${resumeData.experiences}">
+                <form:label path="experiences[${vs.index}].organization">Организация</form:label>
+                <form:input path="experiences[${vs.index}].organization"/>
 
-            <article class="faq-item">
-                <span class="faq-icon"></span>
+                <form:label path="experiences[${vs.index}].position">Должность</form:label>
+                <form:input path="experiences[${vs.index}].position"/>
 
-                <h3 class="faq-question">
-                    <a href="#">Образование</a>
-                </h3>
+                <form:label path="experiences[${vs.index}].responsibility">Обязанности</form:label>
+                <form:input path="experiences[${vs.index}].responsibility"/>
 
-                <div class="faq-answer">
-                    <p>Заполните информацию об обрзованиее.</p>
+                <form:label path="experiences[${vs.index}].startDate">Начало</form:label>
+                <form:input path="experiences[${vs.index}].startDate"/>
 
-                    <c:forEach varStatus="vs" items="${resumeData.educations}">
-                        <form:label
-                                path="educations[${vs.index}].institution">Учреждение образования</form:label>
-                        <form:input path="educations[${vs.index}].institution"/>
+                <form:label path="experiences[${vs.index}].endDate">Конец</form:label>
+                <form:input path="experiences[${vs.index}].endDate"/>
+            </c:forEach>
 
-                        <form:label path="educations[${vs.index}].specialty">Специальность</form:label>
-                        <form:input path="educations[${vs.index}].specialty"/>
+        </div>
+    </article>
 
-                        <form:label
-                                path="educations[${vs.index}].additionalSpecialty">Дополнительная специальность</form:label>
-                        <form:input path="educations[${vs.index}].additionalSpecialty"/>
+    <article class="faq-item">
+        <span class="faq-icon"></span>
 
-                        <form:label
-                                path="educations[${vs.index}].academicDegree">Ученая степень</form:label>
-                        <form:input path="educations[${vs.index}].academicDegree"/>
+        <h3 class="faq-question">
+            <a href="#">Навыки</a>
+        </h3>
 
-                        <form:label path="educations[${vs.index}].startDate">Начало</form:label>
-                        <form:input path="educations[${vs.index}].startDate"/>
+        <div class="faq-answer">
+            <p>Заполните информацию о навыках.</p>
 
-                        <form:label path="educations[${vs.index}].endDate">Конец</form:label>
-                        <form:input path="educations[${vs.index}].endDate"/>
-                    </c:forEach>
+            <c:forEach varStatus="vs" items="${resumeData.abilities}">
+                <form:label path="abilities[${vs.index}].title">Способность</form:label>
+                <form:input path="abilities[${vs.index}].title"/>
 
-                </div>
-            </article>
+                <form:label
+                        path="abilities[${vs.index}].description">Дополнительная информация</form:label>
+                <form:input path="abilities[${vs.index}].description"/>
+            </c:forEach>
 
-            <article class="faq-item">
-                <span class="faq-icon"></span>
+            <div id="addAbilityRow"></div>
 
-                <h3 class="faq-question">
-                    <a href="#">Опыт</a>
-                </h3>
+            <input class="btn btn-inverse" type="button" id="addAbilityRow" value="Добавить"/>
 
-                <div class="faq-answer">
-                    <p>Заполните информацию об опыте.</p>
+        </div>
+    </article>
 
-                    <c:forEach varStatus="vs" items="${resumeData.experiences}">
-                        <form:label path="experiences[${vs.index}].organization">Организация</form:label>
-                        <form:input path="experiences[${vs.index}].organization"/>
+    <article class="faq-item">
+        <span class="faq-icon"></span>
 
-                        <form:label path="experiences[${vs.index}].position">Должность</form:label>
-                        <form:input path="experiences[${vs.index}].position"/>
+        <h3 class="faq-question">
+            <a href="#">Рекомендации</a>
+        </h3>
 
-                        <form:label path="experiences[${vs.index}].responsibility">Обязанности</form:label>
-                        <form:input path="experiences[${vs.index}].responsibility"/>
+        <div class="faq-answer">
+            <p>Заполните информацию о рекомендациях.</p>
 
-                        <form:label path="experiences[${vs.index}].startDate">Начало</form:label>
-                        <form:input path="experiences[${vs.index}].startDate"/>
+            <c:forEach varStatus="vs" items="${resumeData.recommendations}">
+                <tiles:insertDefinition name="formRecommendationInsert">
+                    <%--<tiles:putAttribute name="number" value="${vs.index}"/>--%>
+                </tiles:insertDefinition>
+                <%--<tiles:insertAttribute name="formRecommendationInsert">--%>
+                <%--<tiles:putAttribute name="number" value="${vs.index}"/>--%>
+                <%--</tiles:insertAttribute>--%>
 
-                        <form:label path="experiences[${vs.index}].endDate">Конец</form:label>
-                        <form:input path="experiences[${vs.index}].endDate"/>
-                    </c:forEach>
+                <%--<tiles:insertAttribute name="formRecommendationInsert">--%>
+                <%--<tiles:putAttribute name="number" value="${vs.index}"/>--%>
+                <%--</tiles:insertAttribute>--%>
 
-                </div>
-            </article>
+                <form:label path="recommendations[${vs.index}].firstName">Имя</form:label>
+                <form:input path="recommendations[${vs.index}].firstName"/>
 
-            <article class="faq-item">
-                <span class="faq-icon"></span>
+                <form:label path="recommendations[${vs.index}].middleName">Отчество</form:label>
+                <form:input path="recommendations[${vs.index}].middleName"/>
 
-                <h3 class="faq-question">
-                    <a href="#">Навыки</a>
-                </h3>
+                <form:label path="recommendations[${vs.index}].lastName">Фамилия</form:label>
+                <form:input path="recommendations[${vs.index}].lastName"/>
 
-                <div class="faq-answer">
-                    <p>Заполните информацию о навыках.</p>
+                <form:label
+                        path="recommendations[${vs.index}].text">Контактная информация</form:label>
+                <form:input path="recommendations[${vs.index}].text"/>
+            </c:forEach>
 
-                    <c:forEach varStatus="vs" items="${resumeData.abilities}">
-                        <form:label path="abilities[${vs.index}].title">Способность</form:label>
-                        <form:input path="abilities[${vs.index}].title"/>
 
-                        <form:label
-                                path="abilities[${vs.index}].description">Дополнительная информация</form:label>
-                        <form:input path="abilities[${vs.index}].description"/>
-                    </c:forEach>
+            <div id="addRecommendationRow"></div>
 
-                </div>
-            </article>
+            <input class="btn btn-inverse" type="button" id="addRecommendation" value="Добавить"/>
 
-            <article class="faq-item">
-                <span class="faq-icon"></span>
+        </div>
+    </article>
 
-                <h3 class="faq-question">
-                    <a href="#">Рекомендации</a>
-                </h3>
+    <br/>
+    <br/>
 
-                <div class="faq-answer">
-                    <p>Заполните информацию о рекомендациях.</p>
+    <input type="submit" value="Создать" class="btn btn-inverse"/>
 
-                    <c:forEach varStatus="vs" items="${resumeData.recommendations}">
-                        <form:label path="recommendations[${vs.index}].firstName">Имя</form:label>
-                        <form:input path="recommendations[${vs.index}].firstName"/>
+    <div class="span8 offset2" id="message-sent"></div>
 
-                        <form:label path="recommendations[${vs.index}].middleName">Отчество</form:label>
-                        <form:input path="recommendations[${vs.index}].middleName"/>
-
-                        <form:label path="recommendations[${vs.index}].lastName">Фамилия</form:label>
-                        <form:input path="recommendations[${vs.index}].lastName"/>
-
-                        <form:label
-                                path="recommendations[${vs.index}].text">Контактная информация</form:label>
-                        <form:input path="recommendations[${vs.index}].text"/>
-                    </c:forEach>
-
-                    <div id="addRecommendationRow"></div>
-
-                    <input type="button" id="addRecommendation" value="add"/>
-
-                </div>
-            </article>
-
-            <br/>
-            <br/>
-
-            <input type="submit" value="Создать" class="btn btn-inverse"/>
-
-            <div class="span8 offset2" id="message-sent"></div>
-
-        </form:form>
-    </div>
+</form:form>
+</div>
 
 </div>
+
+<!-- start of sidebar -->
+<aside class="span4 page-sidebar">
+
+    <section class="widget">
+        <div class="support-widget">
+            <h3 class="title">Генератор резюме</h3>
+
+            <p class="intro">Хотите создать резюме? <a href="<c:url value="/resume"/>">Создать.</a></p>
+        </div>
+    </section>
+
+    <section class="widget">
+        <div class="quick-links-widget">
+            <h3 class="title">Полезные ссылки</h3>
+            <ul id="menu-quick-links" class="menu clearfix">
+                <li><a href="<c:url value="/"/>">Домашнаяя страница</a></li>
+                <li><a href="<c:url value="/catalog"/>">Каталог вакансий</a></li>
+                <li><a href="<c:url value="/catalog"/>">Создание резюме</a></li>
+                <li><a href="<c:url value="/catalog"/>">Мой профайл</a></li>
+                <li><a href="<c:url value="/contact"/>">Контакты</a></li>
+            </ul>
+        </div>
+    </section>
+
+</aside>
+<!-- end of sidebar -->
 </div>
 </div>
 </div>

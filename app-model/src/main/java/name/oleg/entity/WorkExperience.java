@@ -6,8 +6,6 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class WorkExperience {
 
-    public static final WorkExperience NA = new WorkExperience(-1, -1);
-
     @Column(name = "WORK_EXPERIENCE_FROM_YEARS")
     private int fromYears;
 

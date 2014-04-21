@@ -54,7 +54,7 @@ public class Vacancy extends Entity {
     @JoinColumn(name = "EMPLOYER_ID")
     private Employer employer;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "TAGS", joinColumns = @JoinColumn(name = "VACANCY_ID"))
     @Column(name = "TAG")
     private List<String> tags;
