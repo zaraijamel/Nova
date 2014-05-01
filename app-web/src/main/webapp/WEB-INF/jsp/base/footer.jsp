@@ -9,26 +9,32 @@
                     <h3 class="title">Как это работает</h3>
 
                     <div class="textwidget">
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
-                            tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>
-
-                        <p>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
-                            ut aliquip ex ea commodo consequat. </p>
+                        <p>Интернет-сервис, созданный для быстрого поиска работы</p>
+                        <p>Позволяет найти работу в Беларуси.</p>
                     </div>
                 </section>
             </div>
 
             <div class="span3">
-                <section class="widget"><h3 class="title">Категории</h3>
+                <section class="widget"><h3 class="title">Навигация</h3>
                     <ul>
-                        <li><a href="#" title="Lorem ipsum dolor sit amet,">Advanced Techniques</a></li>
+                        <li><a href="<c:url value="/"/>">Домашнаяя страница</a></li>
+                        <li><a href="<c:url value="/catalog"/>">Каталог вакансий</a></li>
+                        <li><a href="<c:url value="/catalog"/>">Создание резюме</a></li>
+                        <li><a href="<c:url value="/catalog"/>">Мой профайл</a></li>
+                        <li><a href="<c:url value="/contact"/>">Контакты</a></li>
                     </ul>
                 </section>
             </div>
 
             <div class="span3">
                 <section class="widget">
-                    <h3 class="title">Последнии сообщения</h3>
+                </section>
+            </div>
+
+            <div class="span3">
+                <section class="widget">
+                    <h3 class="title">Последнии twitter-сообщения</h3>
 
                     <div id="twitter_update_list">
                         <ul>

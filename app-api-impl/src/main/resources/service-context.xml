@@ -22,6 +22,8 @@
     <context:component-scan base-package="name.oleg.parser"/>
     <context:component-scan base-package="name.oleg.resume"/>
     <context:component-scan base-package="name.oleg.mail"/>
+    <context:component-scan base-package="name.oleg.map"/>
+    <context:component-scan base-package="name.oleg.io.pagereader"/>
 
     <bean id="linkedInApiOAuthFactory" class="com.google.code.linkedinapi.client.oauth.LinkedInOAuthServiceFactory"
           factory-method="getInstance"/>

@@ -9,12 +9,13 @@
             <div class="span8 page-content">
 
                 <article class=" type-page  hentry clearfix">
-                    <h1 class="post-title"><a href="#">Ошибка генерации резюме</a></h1>
+                    <h1 class="post-title"><a href="#">Ошибка при генерации резюме.</a></h1>
 
                     <hr>
 
                     <blockquote>
-                        <p>Ошибка</p>
+                        <p>Произошла ошибка при генерации резюме. В скором времени мы устраним её.</p>
+                        <p>Перейти на <a href="<c:url value="/"/>">главную страницу</a>.</p>
                     </blockquote>
 
                 </article>

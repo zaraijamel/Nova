@@ -38,6 +38,19 @@
     <script type='text/javascript' src='<c:url value="/resources/js/html5.js"/>'></script>
     <!--[endif]-->
 
+    <!-- script -->
+    <script type='text/javascript' src='<c:url value="/resources/js/jquery-1.8.3.min.js"/>'></script>
+    <script type='text/javascript' src='<c:url value="/resources/js/jquery.easing.1.3.js"/>'></script>
+    <script type='text/javascript' src='<c:url value="/resources/js/prettyphoto/jquery.prettyPhoto.js"/>'></script>
+    <script type='text/javascript' src='<c:url value="/resources/js/jflickrfeed.js"/>'></script>
+    <script type='text/javascript' src='<c:url value="/resources/js/jquery.liveSearch.js"/>'></script>
+    <script type='text/javascript' src='<c:url value="/resources/js/jquery.form.js"/>'></script>
+    <script type='text/javascript' src='<c:url value="/resources/js/jquery.validate.min.js"/>'></script>
+    <script type='text/javascript' src="<c:url value="/resources/js/jquery-twitterFetcher.js"/>"></script>
+    <script type='text/javascript' src='<c:url value="/resources/js/custom.js"/>'></script>
+    <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <!-- script -->
+
 </head>
 <body>
 
@@ -50,17 +63,6 @@
 <tiles:insertAttribute name="footer-bottom"/>
 
 <a href="#top" id="scroll-top"></a>
-
-<!-- script -->
-<script type='text/javascript' src='<c:url value="/resources/js/jquery-1.8.3.min.js"/>'></script>
-<script type='text/javascript' src='<c:url value="/resources/js/jquery.easing.1.3.js"/>'></script>
-<script type='text/javascript' src='<c:url value="/resources/js/prettyphoto/jquery.prettyPhoto.js"/>'></script>
-<script type='text/javascript' src='<c:url value="/resources/js/jflickrfeed.js"/>'></script>
-<script type='text/javascript' src='<c:url value="/resources/js/jquery.liveSearch.js"/>'></script>
-<script type='text/javascript' src='<c:url value="/resources/js/jquery.form.js"/>'></script>
-<script type='text/javascript' src='<c:url value="/resources/js/jquery.validate.min.js"/>'></script>
-<script type='text/javascript' src="<c:url value="/resources/js/jquery-twitterFetcher.js"/>"></script>
-<script type='text/javascript' src='<c:url value="/resources/js/custom.js"/>'></script>
 
 </body>
 </html>

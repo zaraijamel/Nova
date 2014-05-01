@@ -1,33 +1,24 @@
 package name.oleg.util;
 
-import org.apache.http.HttpResponse;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.Iterator;
+import java.util.Map;
 
 public class HttpUtil {
 
-    public static String getPage(HttpResponse httpResponse) throws IOException {
-        BufferedReader bufferedReader = null;
-        InputStream content = null;
-        StringBuilder builder = new StringBuilder();
-        try {
-            content = httpResponse.getEntity().getContent();
-            bufferedReader = new BufferedReader(new InputStreamReader(content));
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                builder.append(line);
-            }
-            return builder.toString();
-        } finally {
-            if (content != null) {
-                content.close();
-            }
-            if (bufferedReader != null) {
-                bufferedReader.close();
+    public static String buildQueryParameters(Map<String, String> parameters) throws UnsupportedEncodingException {
+        final StringBuilder builder = new StringBuilder();
+        Iterator<Map.Entry<String, String>> iterator = parameters.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, String> entry = iterator.next();
+            builder.append(entry.getKey());
+            builder.append('=');
+            builder.append(URLEncoder.encode(entry.getValue(), "utf-8"));
+            if (iterator.hasNext()) {
+                builder.append("&");
             }
         }
+        return builder.toString();
     }
 }

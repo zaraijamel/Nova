@@ -107,20 +107,6 @@
                 </section>
 
                 <section class="widget">
-                    <div class="quick-links-widget">
-                        <h3 class="title">Полезные ссылки</h3>
-                        <ul id="menu-quick-links" class="menu clearfix">
-                            <li><a href="<c:url value="/"/>">Домашнаяя страница</a></li>
-                            <li><a href="<c:url value="/catalog"/>">Каталог вакансий</a></li>
-                            <li><a href="<c:url value="/catalog"/>">Создание резюме</a></li>
-                            <li><a href="<c:url value="/catalog"/>">Мой профайл</a></li>
-                            <li><a href="<c:url value="/contact"/>">Контакты</a></li>
-                        </ul>
-                    </div>
-                </section>
-
-
-                <section class="widget">
                     <h3 class="title">Новые объявления</h3>
                     <ul class="articles">
                         <c:forEach var="vacancy" items="${newestVacancies}">

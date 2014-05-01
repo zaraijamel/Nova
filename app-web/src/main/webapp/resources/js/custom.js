@@ -8,14 +8,14 @@ jQuery(document).ready(function (e) {
 
     $ = jQuery;
 
-    var recommendationIndex = 0;
-    $("#addRecommendation").click(function () {
-        $.get("/appendRecommendation", { fieldId: recommendationIndex++},
-            function (data) {
-                $("#addRecommendationRow").before(data);
-            });
-    });
-
+    ymaps.ready(init);
+    var myMap;
+    function init(){
+        myMap = new ymaps.Map("map", {
+            center: [55.76, 37.64],
+            zoom: 7
+        });
+    }
 
 
     $(".slide-toggle-control").click(function () {

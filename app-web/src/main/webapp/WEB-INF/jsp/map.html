@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        ymaps.ready(init);
+        var myMap, myPlacemark;
+
+        function init() {
+            myMap = new ymaps.Map("map", {
+                center: [53.55, 27.33],
+                zoom: 7
+            });
+            myMap.controls.add('geolocationControl');
+            myMap.controls.remove('searchControl');
+            myMap.controls.remove('trafficControl');
+
+            var myGeocoder = ymaps.geocode('Независимости, 174');
+            myGeocoder.then(
+                    function (res) {
+                        var coords = res.geoObjects.get(0).geometry.getCoordinates();
+                        var myGeocoder = ymaps.geocode(coords, {kind: 'street'});
+                        myGeocoder.then(
+                                function (res) {
+                                    var street = res.geoObjects.get(0);
+                                    var name = street.properties.get('name');
+                                    // Будет выведено «улица Большая Молчановка»,
+                                    // несмотря на то, что обратно геокодируются
+                                    // координаты дома 10 на ул. Новый Арбат.
+                                    alert(name);
+                                }
+                        );
+                    });
+        }
+    </script>
+</head>
+<body>
+
+<div id="map" style="width: 600px; height: 400px"></div>
+
+</body>
+</html>

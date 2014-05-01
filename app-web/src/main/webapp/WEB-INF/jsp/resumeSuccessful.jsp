@@ -14,7 +14,7 @@
                     <hr>
 
                     <blockquote>
-                        <p>Успешно</p>
+                        <p>Успешно.</p>
                     </blockquote>
 
                 </article>

@@ -2,7 +2,7 @@ package name.oleg.service;
 
 import name.oleg.entity.Vacancy;
 import name.oleg.search.VacancySearchParam;
-import name.oleg.util.Coordinate;
+import name.oleg.map.Coordinate;
 import org.springframework.data.domain.Page;
 
 import java.util.Collection;

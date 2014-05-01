@@ -2,7 +2,7 @@ package name.oleg.service;
 
 import name.oleg.entity.*;
 import name.oleg.search.*;
-import name.oleg.util.Coordinate;
+import name.oleg.map.Coordinate;
 import org.apache.commons.lang3.Validate;
 import org.joda.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;

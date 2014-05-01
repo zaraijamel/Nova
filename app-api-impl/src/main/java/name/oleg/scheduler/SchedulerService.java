@@ -2,7 +2,6 @@ package name.oleg.scheduler;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,5 +27,10 @@ public class SchedulerService {
             }
             logger.info("Task end - " + worker);
         }
+    }
+
+    //    @Scheduled(fixedDelay = 5000)
+    public void mailDeliveryScheduler() {
+
     }
 }

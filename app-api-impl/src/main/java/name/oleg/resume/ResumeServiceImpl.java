@@ -3,6 +3,7 @@ package name.oleg.resume;
 import name.oleg.mail.MailMessagePreparatory;
 import name.oleg.mail.MailMessageSender;
 import name.oleg.resume.data.ResumeData;
+import name.oleg.resume.data.ResumeFormat;
 import name.oleg.resume.data.ResumeTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -20,7 +21,6 @@ import javax.mail.util.ByteArrayDataSource;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
 
 @Service
 public class ResumeServiceImpl implements ResumeService {
@@ -32,15 +32,18 @@ public class ResumeServiceImpl implements ResumeService {
     private ResumeGenerator resumeGenerator;
 
     @Override
-    public void generateResume(OutputStream destinationOutputStream, ResumeData resumeData, ResumeTemplate resumeTemplate) throws Exception {
-        resumeGenerator.generate(resumeData, getTemplate(resumeTemplate), destinationOutputStream);
+    public void generateResume(File destinationFile, ResumeData resumeData, ResumeTemplate resumeTemplate, ResumeFormat resumeFormat) throws Exception {
+        resumeGenerator.generate(resumeData, getTemplate(resumeTemplate), destinationFile);
+        if (resumeFormat == ResumeFormat.PDF) {
+            ResumeConverter resumeConverter = new ResumeConverter();
+        }
     }
 
     @Override
     public void sendEmailResume(final String destinationEmail, final ResumeData resumeData, final ResumeTemplate resumeTemplate) throws Exception {
         final File template = getTemplate(resumeTemplate);
         final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        resumeGenerator.generate(resumeData, template, outputStream);
+        resumeGenerator.generate(resumeData, template, new File(""));
 
         mailMessageSender.send(new MailMessagePreparatory<MimeMessage>() {
             @Override
@@ -67,7 +70,8 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     private File getTemplate(ResumeTemplate resumeTemplate) throws IOException {
-        ClassPathResource classPathResource = new ClassPathResource("/resources/templates/" + resumeTemplate.getName() + ".docx");
-        return classPathResource.getFile();
+        ClassPathResource classPathResource = new ClassPathResource("/resources/templates/" + resumeTemplate.getFileName() + ".docx");
+//        return classPathResource.getFile();
+        return new File("D:\\template2.docx");
     }
 }

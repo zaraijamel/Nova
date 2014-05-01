@@ -7,40 +7,34 @@ import fr.opensagres.xdocreport.template.TemplateEngineKind;
 import name.oleg.resume.data.ResumeData;
 import org.springframework.stereotype.Component;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 @Component("wordResumeGenerator")
 public class WordResumeGenerator implements ResumeGenerator {
 
-//    @Override
-    public void generate(ResumeData resumeData, File sourceFile, File destinationFile) throws Exception {
+    @Override
+    public void generate(ResumeData resumeData, File templateFile, File destinationFile) throws Exception {
+        FileOutputStream fileOutputStream = null;
         FileInputStream fileInputStream = null;
-        OutputStream outputStream = null;
         try {
-            fileInputStream = new FileInputStream(sourceFile);
+            fileInputStream = new FileInputStream(templateFile);
             IXDocReport report = XDocReportRegistry.getRegistry().loadReport(fileInputStream, TemplateEngineKind.Velocity);
 
             IContext context = report.createContext();
             context.put("rd", resumeData);
 
-            outputStream = new FileOutputStream(destinationFile);
-            report.process(context, outputStream);
+            fileOutputStream = new FileOutputStream(destinationFile);
+            report.process(context, fileOutputStream);
         } finally {
             if (fileInputStream != null) {
                 fileInputStream.close();
             }
-            if (outputStream != null) {
-                outputStream.close();
+            if (fileOutputStream != null) {
+                fileOutputStream.close();
             }
         }
-    }
-
-    public void generate(ResumeData resumeData, InputStream sourceFile, InputStream destination) throws Exception {
-
-    }
-
-    @Override
-    public void generate(ResumeData resumeData, File templateFile, OutputStream destination) throws Exception {
-        //To change body of implemented methods use File | Settings | File Templates.
     }
 }

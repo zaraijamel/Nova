@@ -39,14 +39,21 @@
 
     <definition name="resume" extends="base.definition">
         <put-attribute name="title" value="Генерация резюме"/>
-        <put-attribute name="body" value="resume.forms"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/resume.jsp"/>
     </definition>
 
-    <definition name="resume.forms" template="/WEB-INF/jsp/resume.jsp">
-        <put-attribute name="formRecommendationInsert" value="/WEB-INF/jsp/resume/formRecommendationInsert.jsp"/>
-    </definition>
+    <!--<definition name="resume.forms" template="/WEB-INF/jsp/resume.jsp">-->
+        <!--<put-attribute name="formRecommendationInsert" value="/WEB-INF/jsp/resume/formRecommendationInsert.jsp"/>-->
+    <!--</definition>-->
 
     <definition name="formRecommendationInsert" template="/WEB-INF/jsp/resume/formRecommendationInsert.jsp"/>
+
+    <definition name="formAbilityAppend" template="/WEB-INF/jsp/resume/formAbilityAppend.jsp"/>
+
+    <definition name="formEducationAppend" template="/WEB-INF/jsp/resume/formEducationAppend.jsp"/>
+
+    <definition name="formExperienceAppend" template="/WEB-INF/jsp/resume/formExperienceAppend.jsp"/>
+
 
     <definition name="resumeSuccessful" extends="base.definition">
         <put-attribute name="body" value="/WEB-INF/jsp/resumeSuccessful.jsp"/>
@@ -56,9 +63,9 @@
         <put-attribute name="body" value="/WEB-INF/jsp/resumeError.jsp"/>
     </definition>
 
-    <definition name="resumeTemplate" extends="base.definition">
+    <definition name="resumeSettings" extends="base.definition">
         <put-attribute name="title" value="Генерация резюме"/>
-        <put-attribute name="body" value="/WEB-INF/jsp/resumeTemplate.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/resumeSettings.jsp"/>
     </definition>
 
     <definition name="login" template="/WEB-INF/jsp/login.jsp"/>

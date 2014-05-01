@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!-- Start of Page Container -->
@@ -88,15 +89,18 @@
                 </section>
 
                 <section class="widget">
-                    <div class="quick-links-widget">
-                        <h3 class="title">Полезные ссылки</h3>
-                        <ul id="menu-quick-links" class="menu clearfix">
-                            <li><a href="<c:url value="/"/>">Домашнаяя страница</a></li>
-                            <li><a href="<c:url value="/catalog"/>">Каталог вакансий</a></li>
-                            <li><a href="<c:url value="/catalog"/>">Создание резюме</a></li>
-                            <li><a href="<c:url value="/catalog"/>">Мой профайл</a></li>
-                            <li><a href="<c:url value="/contact"/>">Контакты</a></li>
-                        </ul>
+                    <div class="support-widget">
+                        <h3 class="title">Подписка на рассылку</h3>
+
+                        <form:form action="/subscribe" method="POST">
+                            <p class="intro">Введиет email и критерии поиска (через запятую).</p>
+
+                            <label>Email<input type="text" name="email" placeholder="Email"/></label>
+
+                            <label>Критерии<input type="text" name="criteria" placeholder="Критерии"/></label>
+
+                            <input class="btn btn-inverse" type="submit" value="Подписаться"/>
+                        </form:form>
                     </div>
                 </section>
 
@@ -108,6 +112,10 @@
                             <a href="<c:url value="/search?tag=${tag}"/>" class="btn btn-mini">${tag}</a>
                         </c:forEach>
                     </div>
+                </section>
+
+                <section class="widget">
+                    <!-- <div id="map" style="width: 600px; height: 400px"></div> -->
                 </section>
 
             </aside>

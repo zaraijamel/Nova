@@ -6,6 +6,10 @@ import java.util.List;
 
 public class StringUtil {
 
+    public static List<String> split(String text) {
+        return Arrays.asList(text.split(","));
+    }
+
     public static List<String> splitByWords(String text) {
         if (text == null) {
             return Collections.emptyList();

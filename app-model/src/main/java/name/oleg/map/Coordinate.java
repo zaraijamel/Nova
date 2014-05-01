@@ -1,4 +1,4 @@
-package name.oleg.util;
+package name.oleg.map;
 
 public class Coordinate {
 

@@ -1,12 +1,16 @@
 package name.oleg.resume.data;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Experience {
     private String position;
     private String organization;
     private String responsibility;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date startDate;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date endDate;
 
     public String getPosition() {
