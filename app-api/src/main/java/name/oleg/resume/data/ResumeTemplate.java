@@ -1,9 +1,11 @@
 package name.oleg.resume.data;
 
 public enum ResumeTemplate {
-    SIMPLE("Первый шаблон", "Описание", "simple", "template1"),
-    SIMPLE1("Первый шаблон", "Описание", "simple", "template1"),
-    SIMPLE2("Первый шаблон", "Описание", "simple", "template1");
+    TEMPLATE1("Первый шаблон", "Описание", "template1", "template1"),
+    TEMPLATE2("Первый шаблон", "Описание", "template2", "template2"),
+    TEMPLATE3("Первый шаблон", "Описание", "template3", "template3"),
+    TEMPLATE4("Первый шаблон", "Описание", "template4", "template4"),
+    TEMPLATE5("Первый шаблон", "Описание", "template5", "template5");
 
     private String name;
     private String description;

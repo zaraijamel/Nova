@@ -1,7 +1,11 @@
 package name.oleg.resume.data;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Address {
+    @NotEmpty(message = "Заполните поле Город")
     private String city;
+    @NotEmpty(message = "Заполните поле Адрес")
     private String street;
 
     public String getCity() {

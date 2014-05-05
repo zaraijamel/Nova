@@ -1,15 +1,21 @@
 package name.oleg.resume.data;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
 public class Experience {
+    @NotEmpty(message = "Заполните поле Должность")
     private String position;
+    @NotEmpty(message = "Заполните поле Организация")
     private String organization;
+    @NotEmpty(message = "Заполните поле Обязанности")
     private String responsibility;
+    @NotEmpty(message = "Заполние поле Начало")
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date startDate;
+    @NotEmpty(message = "Заполните поле Окончание")
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date endDate;
 

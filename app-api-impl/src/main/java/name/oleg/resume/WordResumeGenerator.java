@@ -9,15 +9,13 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.OutputStream;
 
 @Component("wordResumeGenerator")
 public class WordResumeGenerator implements ResumeGenerator {
 
     @Override
-    public void generate(ResumeData resumeData, File templateFile, File destinationFile) throws Exception {
-        FileOutputStream fileOutputStream = null;
+    public void generate(ResumeData resumeData, File templateFile, OutputStream destinationStream) throws Exception {
         FileInputStream fileInputStream = null;
         try {
             fileInputStream = new FileInputStream(templateFile);
@@ -26,15 +24,13 @@ public class WordResumeGenerator implements ResumeGenerator {
             IContext context = report.createContext();
             context.put("rd", resumeData);
 
-            fileOutputStream = new FileOutputStream(destinationFile);
-            report.process(context, fileOutputStream);
+            report.process(context, destinationStream);
+            destinationStream.flush();
         } finally {
             if (fileInputStream != null) {
                 fileInputStream.close();
             }
-            if (fileOutputStream != null) {
-                fileOutputStream.close();
-            }
+            destinationStream.close();
         }
     }
 }

@@ -4,7 +4,7 @@ import name.oleg.resume.data.ResumeFormat;
 import name.oleg.resume.data.ResumeTemplate;
 
 public class ResumeSettingsForm {
-    private ResumeTemplate resumeTemplate = ResumeTemplate.SIMPLE;
+    private ResumeTemplate resumeTemplate = ResumeTemplate.TEMPLATE1;
     private ResumeFormat resumeFormat = ResumeFormat.PDF;
 
     public ResumeSettingsForm() {

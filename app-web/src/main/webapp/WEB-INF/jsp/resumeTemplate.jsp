@@ -39,7 +39,9 @@
                                     <h4 class="category"><form:radiobutton path="resumeTemplate"
                                                                            value="${resumeTemplate}"/>${resumeTemplate.name}</h4>
 
-                                    <img src="<c:url value="/resources/images/resumeTemplates/${resumeTemplate.imageName}.png"/>"/>
+                                    <a href="<c:url value="/resources/images/resumeTemplates/${resumeTemplate.imageName}.png"/>" rel="prettyPhoto">
+                                        <img src="<c:url value="/resources/images/resumeTemplates/${resumeTemplate.imageName}.png"/>"/>
+                                    </a>
 
                                     <div class="category-description">
                                         <p>${resumeTemplate.description}</p>

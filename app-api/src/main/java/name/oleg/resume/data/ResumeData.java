@@ -2,25 +2,47 @@ package name.oleg.resume.data;
 
 import org.apache.commons.collections.functors.InstantiateFactory;
 import org.apache.commons.collections.list.LazyList;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class ResumeData {
+    @NotEmpty(message = "Заполните поле Имя")
     private String firstName;
+    @NotEmpty(message = "Заполните поле Отчество")
     private String middleName;
+    @NotEmpty(message = "Заполните поле Фамилия")
     private String lastName;
+    @NotEmpty(message = "Заполните поле Цели")
+    private String goal;
+    @NotEmpty(message = "Заполните поле Email")
+    @Email(message = "Неверный формат поля Email")
+    private String email;
+    @NotEmpty(message = "Заполните поле Телефон")
+    private String phone;
     private String pictureLogoUrl;
     private String website;
-    private String goal;
-    private String email;
-    private String phone;
     private Date birthday;
+    @Valid
+    @NotNull
     private Address address;
+    @Valid
+    @NotNull
     private List<Education> educations;
+    @Valid
+    @NotNull
     private List<Experience> experiences;
+    @Valid
+    @NotNull
     private List<Ability> abilities;
+    @Valid
+    @NotNull
     private List<Recommendation> recommendations;
 
     public ResumeData() {

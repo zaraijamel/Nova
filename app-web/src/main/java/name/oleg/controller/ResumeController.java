@@ -16,6 +16,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.File;
+import javax.validation.Valid;
 
 @Controller
 public class ResumeController {
@@ -50,33 +51,29 @@ public class ResumeController {
         return "resume";
     }
 
-    @RequestMapping(value = "/resume/save", method = RequestMethod.POST)
-    public String sendResumeToUser(@ModelAttribute("resumeData") ResumeData resumeData, HttpServletResponse response) {
-        response.setContentType("application/pdf");
-        response.setHeader("Content-Disposition", "attachment;filename=resume.pdf");
-        try {
-            resumeService.generateResume(null, resumeData, null, null);
-        } catch (Exception e) {
-            logger.error(e.getMessage(), e);
-            return "resumeError";
-        }
-        return "resumeSuccessful";
-    }
-
     @RequestMapping(value = "/resume/generate", method = RequestMethod.POST)
-    public String generate(@ModelAttribute("resumeSettings") ResumeSettingsForm resumeSettingsForm, HttpServletRequest request) {
+    public String generate(@ModelAttribute("resumeSettings") ResumeSettingsForm resumeSettingsForm, HttpServletRequest request, HttpServletResponse response) {
         ResumeData resumeData = (ResumeData) request.getSession().getAttribute("resumeData");
         if (resumeData == null) {
             return "resumeError";
         }
 
         try {
-            resumeService.generateResume(new File("D:\\1.pdf"), resumeData, resumeSettingsForm.getResumeTemplate(), resumeSettingsForm.getResumeFormat());
+            ResumeFormat resumeFormat = resumeSettingsForm.getResumeFormat();
+            if (resumeFormat == ResumeFormat.PDF) {
+                response.setContentType("application/pdf");
+                response.setHeader("Content-disposition", "inline; filename=resume.pdf");
+                resumeService.generatePDFResume(response.getOutputStream(), resumeData, resumeSettingsForm.getResumeTemplate());
+            } else if (resumeFormat == ResumeFormat.WORD) {
+                response.setContentType("application/msword");
+                response.setHeader("Content-disposition", "inline; filename=resume.docx");
+                resumeService.generateWordResume(response.getOutputStream(), resumeData, resumeSettingsForm.getResumeTemplate());
+            }
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             return "resumeError";
         }
-        return "resumeSuccessful";
+        return null;
     }
 
     @RequestMapping("/resume/requestLinkedin")
@@ -135,7 +132,11 @@ public class ResumeController {
     }
 
     @RequestMapping(value = "/resumeSettings", method = RequestMethod.POST)
-    public String resumeTemplate(@ModelAttribute("resumeData") ResumeData resumeData, HttpServletRequest request, HttpServletResponse response, Model model) {
+    public String resumeTemplate(@ModelAttribute("resumeData") @Valid ResumeData resumeData, BindingResult result, HttpServletRequest request, Model model) {
+        if (result.hasErrors()) {
+            return "resume";
+        }
+
         request.getSession().setAttribute("resumeData", resumeData);
         model.addAttribute("resumeSettings", new ResumeSettingsForm());
         model.addAttribute("resumeTemplates", ResumeTemplate.values());

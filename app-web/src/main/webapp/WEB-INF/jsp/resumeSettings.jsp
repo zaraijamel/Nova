@@ -33,7 +33,12 @@
                                         <h4 class="category"><form:radiobutton path="resumeTemplate"
                                                                                value="${resumeTemplate}"/>${resumeTemplate.name}</h4>
 
-                                        <img src="<c:url value="/resources/images/resumeTemplates/${resumeTemplate.imageName}.png"/>"/>
+                                        <a href="<c:url value="/resources/images/resumeTemplates/${resumeTemplate.imageName}.png"/>"
+                                           rel="prettyPhoto">
+                                            <img
+                                                    style="max-width: 150px; max-height: 200px; border-width: 1px; border-color: #000000"
+                                                    src="<c:url value="/resources/images/resumeTemplates/${resumeTemplate.imageName}.png"/>"/>
+                                        </a>
 
                                     </section>
                                 </c:forEach>

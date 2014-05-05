@@ -29,7 +29,7 @@
     <br/>
     <br/>
 
-    <form:form method="POST" action="/resumeSettings" commandName="resumeData">
+    <form:form id="resumeForm" method="POST" action="/resumeSettings" commandName="resumeData">
 
         <article class="faq-item active">
             <span class="faq-icon"></span>
@@ -41,23 +41,28 @@
             <div class="faq-answer">
                 <p>Заполните персональные данные.</p>
 
-                <form:label path="firstName">Имя</form:label>
+                <form:label path="firstName">Имя <span>*</span></form:label>
                 <form:input path="firstName"/>
+                <form:errors path="firstName"/>
 
-                <form:label path="lastName">Фамилия</form:label>
+                <form:label path="lastName">Фамилия <span>*</span></form:label>
                 <form:input path="lastName"/>
+                <form:errors path="lastName"/>
 
-                <form:label path="middleName">Отчество</form:label>
+                <form:label path="middleName">Отчество <span>*</span></form:label>
                 <form:input path="middleName"/>
+                <form:errors path="middleName"/>
 
-                <form:label path="phone">Телефон</form:label>
+                <form:label path="phone">Телефон <span>*</span></form:label>
                 <form:input path="phone" placeholder="(8029)123-12-34"/>
+                <form:errors path="phone"/>
 
                 <form:label path="website">Персональный сайт</form:label>
                 <form:input path="website" placeholder="www.example.com"/>
 
-                <form:label path="email">Email</form:label>
+                <form:label path="email">Email <span>*</span></form:label>
                 <form:input path="email" placeholder="example@mail.com"/>
+                <form:errors path="email"/>
 
             </div>
         </article>
@@ -72,11 +77,13 @@
             <div class="faq-answer">
                 <p>Заполните адрес проживания.</p>
 
-                <form:label path="address.city">Город</form:label>
+                <form:label path="address.city">Город <span>*</span></form:label>
                 <form:input path="address.city"/>
+                <form:errors path="address.city"/>
 
-                <form:label path="address.street">Адрес</form:label>
+                <form:label path="address.street">Адрес <span>*</span></form:label>
                 <form:input path="address.street"/>
+                <form:errors path="address.street"/>
             </div>
         </article>
 
@@ -92,25 +99,32 @@
 
                 <c:forEach varStatus="vs" items="${resumeData.educations}">
                     <form:label
-                            path="educations[${vs.index}].institution">Учреждение образования</form:label>
+                            path="educations[${vs.index}].institution">Учреждение образования <span>*</span></form:label>
                     <form:input path="educations[${vs.index}].institution"/>
+                    <form:errors path="educations[${vs.index}].institution"/>
 
-                    <form:label path="educations[${vs.index}].specialty">Специальность</form:label>
+                    <form:label path="educations[${vs.index}].specialty">Специальность <span>*</span></form:label>
                     <form:input path="educations[${vs.index}].specialty"/>
+                    <form:errors path="educations[${vs.index}].specialty"/>
 
                     <form:label
-                            path="educations[${vs.index}].additionalSpecialty">Дополнительная специальность</form:label>
+                            path="educations[${vs.index}].additionalSpecialty">Дополнительная специальность <span>*</span></form:label>
                     <form:input path="educations[${vs.index}].additionalSpecialty"/>
+                    <form:errors path="educations[${vs.index}].additionalSpecialty"/>
 
                     <form:label
-                            path="educations[${vs.index}].academicDegree">Ученая степень</form:label>
+                            path="educations[${vs.index}].academicDegree">Ученая степень <span>*</span></form:label>
                     <form:input path="educations[${vs.index}].academicDegree"/>
+                    <form:errors path="educations[${vs.index}].academicDegree"/>
 
-                    <form:label path="educations[${vs.index}].startDate">Начало</form:label>
+                    <form:label path="educations[${vs.index}].startDate">Начало <span>*</span></form:label>
                     <form:input path="educations[${vs.index}].startDate" placeholder="01/01/2014"/>
+                    <form:errors path="educations[${vs.index}].startDate"/>
 
-                    <form:label path="educations[${vs.index}].endDate">Конец</form:label>
+                    <form:label path="educations[${vs.index}].endDate">Окончание <span>*</span></form:label>
                     <form:input path="educations[${vs.index}].endDate" placeholder="01/01/2014"/>
+                    <form:errors path="educations[${vs.index}].endDate"/>
+                    <hr>
                 </c:forEach>
 
                 <div id="addEducationRow"></div>
@@ -131,20 +145,26 @@
                 <p>Заполните информацию об опыте.</p>
 
                 <c:forEach varStatus="vs" items="${resumeData.experiences}">
-                    <form:label path="experiences[${vs.index}].organization">Организация</form:label>
+                    <form:label path="experiences[${vs.index}].organization">Организация <span>*</span></form:label>
                     <form:input path="experiences[${vs.index}].organization"/>
+                    <form:errors path="experiences[${vs.index}].organization"/>
 
-                    <form:label path="experiences[${vs.index}].position">Должность</form:label>
+                    <form:label path="experiences[${vs.index}].position">Должность <span>*</span></form:label>
                     <form:input path="experiences[${vs.index}].position"/>
+                    <form:errors path="experiences[${vs.index}].position"/>
 
-                    <form:label path="experiences[${vs.index}].responsibility">Обязанности</form:label>
+                    <form:label path="experiences[${vs.index}].responsibility">Обязанности <span>*</span></form:label>
                     <form:input path="experiences[${vs.index}].responsibility"/>
+                    <form:errors path="experiences[${vs.index}].responsibility"/>
 
-                    <form:label path="experiences[${vs.index}].startDate">Начало</form:label>
+                    <form:label path="experiences[${vs.index}].startDate">Начало <span>*</span></form:label>
                     <form:input path="experiences[${vs.index}].startDate" placeholder="01/01/2014"/>
+                    <form:errors path="experiences[${vs.index}].startDate"/>
 
-                    <form:label path="experiences[${vs.index}].endDate">Конец</form:label>
+                    <form:label path="experiences[${vs.index}].endDate">Окончание <span>*</span></form:label>
                     <form:input path="experiences[${vs.index}].endDate" placeholder="01/01/2014"/>
+                    <form:errors path="experiences[${vs.index}].endDate"/>
+                    <hr>
                 </c:forEach>
 
                 <div id="addExperienceRow"></div>
@@ -165,12 +185,14 @@
                 <p>Заполните информацию о навыках.</p>
 
                 <c:forEach varStatus="vs" items="${resumeData.abilities}">
-                    <form:label path="abilities[${vs.index}].title">Способность</form:label>
+                    <form:label path="abilities[${vs.index}].title">Способность <span>*</span></form:label>
                     <form:input path="abilities[${vs.index}].title"/>
+                    <form:errors path="abilities[${vs.index}].title"/>
 
                     <form:label
-                            path="abilities[${vs.index}].description">Дополнительная информация</form:label>
+                            path="abilities[${vs.index}].description">Дополнительная информация <span>*</span></form:label>
                     <form:input path="abilities[${vs.index}].description"/>
+                    <form:errors path="abilities[${vs.index}].description"/>
                     <hr>
                 </c:forEach>
 
@@ -192,18 +214,22 @@
                 <p>Заполните информацию о рекомендациях.</p>
 
                 <c:forEach varStatus="vs" items="${resumeData.recommendations}">
-                    <form:label path="recommendations[${vs.index}].firstName">Имя</form:label>
+                    <form:label path="recommendations[${vs.index}].firstName">Имя <span>*</span></form:label>
                     <form:input path="recommendations[${vs.index}].firstName"/>
+                    <form:errors path="recommendations[${vs.index}].firstName"/>
 
-                    <form:label path="recommendations[${vs.index}].middleName">Отчество</form:label>
+                    <form:label path="recommendations[${vs.index}].middleName">Отчество <span>*</span></form:label>
                     <form:input path="recommendations[${vs.index}].middleName"/>
+                    <form:errors path="recommendations[${vs.index}].middleName"/>
 
-                    <form:label path="recommendations[${vs.index}].lastName">Фамилия</form:label>
+                    <form:label path="recommendations[${vs.index}].lastName">Фамилия <span>*</span></form:label>
                     <form:input path="recommendations[${vs.index}].lastName"/>
+                    <form:errors path="recommendations[${vs.index}].lastName"/>
 
                     <form:label
-                            path="recommendations[${vs.index}].text">Контактная информация</form:label>
+                            path="recommendations[${vs.index}].text">Рекомендация <span>*</span></form:label>
                     <form:input path="recommendations[${vs.index}].text"/>
+                    <form:errors path="recommendations[${vs.index}].text"/>
                     <hr>
                 </c:forEach>
 
