@@ -132,7 +132,7 @@ public class ResumeController {
     }
 
     @RequestMapping(value = "/resumeSettings", method = RequestMethod.POST)
-    public String resumeTemplate(@ModelAttribute("resumeData") @Valid ResumeData resumeData, BindingResult result, HttpServletRequest request, Model model) {
+    public String resumeTemplate(@ModelAttribute("resumeData")/* @Valid*/ ResumeData resumeData, BindingResult result, HttpServletRequest request, Model model) {
         if (result.hasErrors()) {
             return "resume";
         }

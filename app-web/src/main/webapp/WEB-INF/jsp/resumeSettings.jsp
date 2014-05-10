@@ -36,9 +36,10 @@
                                         <a href="<c:url value="/resources/images/resumeTemplates/${resumeTemplate.imageName}.png"/>"
                                            rel="prettyPhoto">
                                             <img
-                                                    style="max-width: 150px; max-height: 200px; border-width: 1px; border-color: #000000"
+                                                    style="max-width: 150px; max-height: 200px; border: 1px solid #000000;"
                                                     src="<c:url value="/resources/images/resumeTemplates/${resumeTemplate.imageName}.png"/>"/>
                                         </a>
+
 
                                     </section>
                                 </c:forEach>

@@ -1,5 +1,7 @@
 package name.oleg.parser.tutby;
 
+import name.oleg.parser.data.Currency;
+
 import java.util.Date;
 
 public class TutByVacancyAdditional {
@@ -7,11 +9,12 @@ public class TutByVacancyAdditional {
     private Date creationDate;
     private String areaName;
     private String profArea;
-    private String workExperience;
+    private Integer workExperienceFrom;
+    private Integer workExperienceTo;
     private String description;
     private Long compensationFrom;
     private Long compensationTo;
-    private String compensationCurrency;
+    private Currency compensationCurrency;
     private Integer employerId;
     private String employerName;
     private String employerEmail;
@@ -49,12 +52,20 @@ public class TutByVacancyAdditional {
         this.profArea = profArea;
     }
 
-    public String getWorkExperience() {
-        return workExperience;
+    public Integer getWorkExperienceFrom() {
+        return workExperienceFrom;
     }
 
-    public void setWorkExperience(String workExperience) {
-        this.workExperience = workExperience;
+    public void setWorkExperienceFrom(Integer workExperienceFrom) {
+        this.workExperienceFrom = workExperienceFrom;
+    }
+
+    public Integer getWorkExperienceTo() {
+        return workExperienceTo;
+    }
+
+    public void setWorkExperienceTo(Integer workExperienceTo) {
+        this.workExperienceTo = workExperienceTo;
     }
 
     public String getDescription() {
@@ -81,11 +92,11 @@ public class TutByVacancyAdditional {
         this.compensationTo = compensationTo;
     }
 
-    public String getCompensationCurrency() {
+    public Currency getCompensationCurrency() {
         return compensationCurrency;
     }
 
-    public void setCompensationCurrency(String compensationCurrency) {
+    public void setCompensationCurrency(Currency compensationCurrency) {
         this.compensationCurrency = compensationCurrency;
     }
 

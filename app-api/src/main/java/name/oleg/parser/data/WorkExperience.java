@@ -1,12 +1,10 @@
 package name.oleg.parser.data;
 
 public class WorkExperience {
-    private int fromYears;
-    private int toYears;
+    private Integer fromYears;
+    private Integer toYears;
 
-    public WorkExperience(int fromYears, int toYears) {
-        this.fromYears = fromYears;
-        this.toYears = toYears;
+    public WorkExperience() {
     }
 
     public int getFromYears() {

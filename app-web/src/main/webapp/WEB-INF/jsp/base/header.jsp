@@ -20,7 +20,6 @@
                         <li class="current-menu-item"><a href="<c:url value="/"/>">Главная страница</a></li>
                         <li><a href="<c:url value="/search"/>">Каталог вакансий</a></li>
                         <li><a href="<c:url value="/resume"/>">Резюме</a></li>
-                        <li><a href="#">Мой профайл</a></li>
                         <li><a href="<c:url value="/contact"/>">Контакты</a></li>
                     </ul>
                 </div>

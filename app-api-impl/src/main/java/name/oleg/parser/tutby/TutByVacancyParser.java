@@ -63,6 +63,11 @@ public class TutByVacancyParser implements VacancyParser {
         vacancyDto.setArea(additional.getAreaName());
         vacancyDto.setEntranceDate(additional.getCreationDate());
 
+        WorkExperience workExperience = new WorkExperience();
+        workExperience.setFromYears(additional.getWorkExperienceFrom());
+        workExperience.setToYears(additional.getWorkExperienceTo());
+        vacancyDto.setWorkExperience(workExperience);
+
         Employer employer = new Employer();
         employer.setIdentifier(additional.getEmployerId());
         employer.setTitle(additional.getEmployerName());
@@ -73,7 +78,7 @@ public class TutByVacancyParser implements VacancyParser {
         Compensation compensation = new Compensation();
         compensation.setFrom(additional.getCompensationFrom());
         compensation.setTo(additional.getCompensationTo());
-//        compensation.setCurrency(additional.getCompensationCurrency());
+        compensation.setCurrency(additional.getCompensationCurrency());
         vacancyDto.setCompensation(compensation);
 
         ProfessionalArea professionalArea = new ProfessionalArea();
